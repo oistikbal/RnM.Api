@@ -1,0 +1,6 @@
+@RnM.Api_HostAddress = http://localhost:5274
+
+GET {{RnM.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
