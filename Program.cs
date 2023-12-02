@@ -6,6 +6,7 @@ using RnM.Api;
 using RnM.Api.Auth;
 using Microsoft.OpenApi.Models;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -59,3 +60,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//For testing
+public partial class Program { };

@@ -9,6 +9,8 @@ namespace RnM.Api.Auth
     {
         public const string ApiKeySectionName = "Authentication:ApiKey";
         public const string ApiKeyHeaderName = "ApiKey";
+        public const string KeyInvalid = "Invalid Api Key";
+        public const string KeyMissing= "Api Key Missing";
 
         private readonly IConfiguration _configuration;
 
@@ -21,7 +23,7 @@ namespace RnM.Api.Auth
         {
             if (!context.HttpContext.Request.Headers.TryGetValue(ApiKeyHeaderName, out var extractedKey))
             {
-                context.Result = new UnauthorizedObjectResult("Api Key Missing");
+                context.Result = new UnauthorizedObjectResult(KeyMissing);
                 return;
             }
 
@@ -29,7 +31,7 @@ namespace RnM.Api.Auth
 
             if (!apiKey.Equals(extractedKey))
             {
-                context.Result = new UnauthorizedObjectResult("Invalid Api Key");
+                context.Result = new UnauthorizedObjectResult(KeyInvalid);
                 return;
             }
         }
