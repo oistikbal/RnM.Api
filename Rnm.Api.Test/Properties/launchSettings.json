@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Rnm.Api.Test": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Test"
+      }
+    }
+  }
+}
