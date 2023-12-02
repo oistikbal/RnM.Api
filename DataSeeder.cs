@@ -18,7 +18,7 @@ namespace RnM.Api
                 context?.Database.EnsureCreated();
 
 
-                if (app.ApplicationServices.GetService< Microsoft.AspNetCore.Hosting.IHostingEnvironment>().IsDevelopment())
+                if (app.ApplicationServices.GetService< Microsoft.AspNetCore.Hosting.IHostingEnvironment>().IsDevelopment() && !context.Location.Any())
                 {
                     var locations = new Faker<Location>()
                         .RuleFor(l => l.Name, f => f.Address.State())
@@ -41,6 +41,7 @@ namespace RnM.Api
                     context.SaveChanges();
 
                     var characters = new Faker<Character>()
+
                         .RuleFor(c => c.Name, f => f.Person.FirstName)
                         .RuleFor(c => c.Status, f => f.PickRandom<CharacterStatus>())
                         .RuleFor(c => c.Species, f => f.Lorem.Word())
