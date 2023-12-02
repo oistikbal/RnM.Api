@@ -22,19 +22,12 @@ namespace RnM.Api.Controllers
             return _context.Location.Find(id);
         }
 
-        
-        [HttpGet]
-        public IQueryable<Location> Get()
-        {
-            return GetLocations(0);
-        }
 
-        [HttpGet("{page:int}")]
-        public IQueryable<Location> GetLocations(int page)
+        [HttpGet]
+        public IQueryable<Location> GetLocations([FromQuery(Name = "page")] int page)
         {
             const int paginationCount = 5;
             return _context.Location.OrderBy(e => e.Id).Skip(paginationCount * page).Take(5);
         }
-        
     }
 }
