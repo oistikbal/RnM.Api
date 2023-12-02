@@ -8,7 +8,7 @@ namespace RnM.Api.Auth
     public class ApiKeyAuthFilter : IAuthorizationFilter
     {
         public const string ApiKeySectionName = "Authentication:ApiKey";
-        public const string ApiKeyHeaderName = "api-key";
+        public const string ApiKeyHeaderName = "ApiKey";
 
         private readonly IConfiguration _configuration;
 

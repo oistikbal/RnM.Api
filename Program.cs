@@ -16,14 +16,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api Key Auth", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "RnM.Api", Version = "v1" });
     c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
     {
         Description = "ApiKey must appear in header",
         Type = SecuritySchemeType.ApiKey,
-        Name = ApiKeyAuthFilter.ApiKeySectionName,
+        Name = ApiKeyAuthFilter.ApiKeyHeaderName,
         In = ParameterLocation.Header,
-        Scheme = ApiKeyAuthFilter.ApiKeyHeaderName
+        Scheme = ApiKeyAuthFilter.ApiKeySectionName
     });
     var key = new OpenApiSecurityScheme()
     {

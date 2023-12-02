@@ -22,5 +22,20 @@ namespace RnM.Api.Controllers
         {
             return _context.Characters.Find(id);
         }
+
+        
+        [HttpGet]
+        public IQueryable<Character> Get()
+        {
+            return GetCharacters(0);
+        }
+
+        [HttpGet("{page:int}")]
+        public IQueryable<Character> GetCharacters(int page)
+        {
+            const int paginationCount = 5;
+            return _context.Characters.OrderBy(e => e.Id).Skip(paginationCount * page).Take(5);
+        }
+        
     }
 }

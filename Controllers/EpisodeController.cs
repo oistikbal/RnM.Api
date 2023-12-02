@@ -21,11 +21,17 @@ namespace RnM.Api.Controllers
         {
             return _context.Episodes.Find(id);
         }
-
-        [HttpGet("")]
+        [HttpGet]
         public IQueryable<Episode> Get()
         {
-            return _context.Set<Episode>();
+            return GetPages(0);
+        }
+
+        [HttpGet("{page:int}")]
+        public IQueryable<Episode> GetPages(int page)
+        {
+            const int paginationCount = 5;
+            return _context.Episodes.OrderBy(e => e.Id).Skip(paginationCount * page).Take(5);
         }
     }
 }
