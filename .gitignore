@@ -487,3 +487,5 @@ $RECYCLE.BIN/
 ## CUSTOM
 
 *.sqlite
+*sqlite-shm
+*sqlite-wal
