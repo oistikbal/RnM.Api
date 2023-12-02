@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RnM.Api.DB;
 
@@ -10,9 +11,11 @@ using RnM.Api.DB;
 namespace RnM.Api.Migrations
 {
     [DbContext(typeof(RnMContext))]
-    partial class RnMContextModelSnapshot : ModelSnapshot
+    [Migration("20231201221210_UpdateCharacterAndEpisodeAddLocation")]
+    partial class UpdateCharacterAndEpisodeAddLocation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -29,7 +32,7 @@ namespace RnM.Api.Migrations
 
                     b.HasIndex("EpisodesId");
 
-                    b.ToTable("CharacterEpisode", (string)null);
+                    b.ToTable("CharacterEpisode");
                 });
 
             modelBuilder.Entity("RnM.Api.Models.Character", b =>
@@ -74,7 +77,7 @@ namespace RnM.Api.Migrations
 
                     b.HasIndex("LocationId");
 
-                    b.ToTable("Characters", (string)null);
+                    b.ToTable("Characters");
                 });
 
             modelBuilder.Entity("RnM.Api.Models.Episode", b =>
@@ -100,7 +103,7 @@ namespace RnM.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Episodes", (string)null);
+                    b.ToTable("Episodes");
                 });
 
             modelBuilder.Entity("RnM.Api.Models.Location", b =>
@@ -126,7 +129,7 @@ namespace RnM.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Location", (string)null);
+                    b.ToTable("Location");
                 });
 
             modelBuilder.Entity("CharacterEpisode", b =>

@@ -1,5 +1,4 @@
-﻿using Bogus;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RnM.Api.DB;
 using RnM.Api.Models;
 
@@ -7,18 +6,18 @@ namespace RnM.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CharacterController : ControllerBase
+    public class LocationController : ControllerBase
     {
         private RnMContext _context;
-        public CharacterController(RnMContext rnmContext) 
+        public LocationController(RnMContext rnmContext)
         {
             _context = rnmContext;
         }
 
         [HttpGet("{id:int}")]
-        public Character Get(int id)
+        public Location Get(int id)
         {
-            return _context.Characters.Find(id);
+            return _context.Location.Find(id);
         }
     }
 }
