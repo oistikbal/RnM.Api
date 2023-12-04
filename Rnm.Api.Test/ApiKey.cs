@@ -24,7 +24,7 @@ namespace RnM.Api.Test
             var response = await httpClient.GetAsync("");
             var stringResut = await response.Content.ReadAsStringAsync();
 
-            Assert.AreNotEqual("Api Key Missing", stringResut);
+            Assert.AreNotEqual(ApiKeyAuthFilter.KeyMissing, stringResut);
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace RnM.Api.Test
             var response = await httpClient.GetAsync("");
             var stringResut = await response.Content.ReadAsStringAsync();
 
-            Assert.AreNotEqual("Invalid Api Key", stringResut);
+            Assert.AreNotEqual(ApiKeyAuthFilter.KeyInvalid, stringResut);
         }
 
         [TestMethod]
